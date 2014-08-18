@@ -17,6 +17,7 @@ class Contato {
     private $codigo;
     private $nome;
     private $email;
+	private $endereco;
     private $dataNascimento;
 
     public function getCodigo() {
@@ -39,10 +40,18 @@ class Contato {
         return $this->email;
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setEndereco($endereco) {
+        $this->endereco = $endereco;
     }
 
+    public function getEndereco() {
+        return $this->endereco;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }	
+	
     public function getDataNascimento() {
         return $this->dataNascimento;
     }

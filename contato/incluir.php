@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -28,26 +28,26 @@
         <div class="container">
             <h2>Agenda de Contatos</h2>
             <hr>
-            <form class="form-signin" role="form" action="incluir.php" method="post">
-                <div class="form-group">
-                    <label for="nome">Nome:</label> 
-                    <input type="text" class="form-control" id="nome" name="nome">
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail:</label> 
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="endereco">Endereço:</label> 
-                    <input type="text" class="form-control" id="endereco" name="endereco">
-                </div>
-                <div class="form-group">
-                    <label for="dataNascimento">Data de nascimento:</label>
-                    <input type="text" class="form-control" id="dataNascimento" name="dataNascimento">
-                </div>
-                <button type="submit" class="btn btn-default">Gravar</button>
-                <button type="reset" class="btn btn-default">Limpar campos</button>
-            </form>
+			<?php
+			// Carregamento das classes
+			require_once("../Classes/Contato/Contato.php");
+			// Recebi os valores passados via formulário
+			$nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRING);
+			$email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+			$endereco = filter_input(INPUT_POST, "endereco", FILTER_SANITIZE_STRING);
+			$dataNascimento = filter_input(INPUT_POST, "dataNascimento", FILTER_SANITIZE_STRING);
+			// Instanciar o objeto
+			$contato = new Contato();
+			$contato->setNome($nome);
+			$contato->setEmail($email);
+			$contato->setEndereco($endereco);
+			$contato->setDataNascimento($dataNascimento);
+			?>
+			
+			Nome: <?=$contato->getNome()?><br>
+			E-mail: <?=$contato->getEmail()?><br>
+			Endereço: <?=$contato->getEndereco()?><br>
+			Data de nascimento: <?=$contato->getDataNascimento()?><br>
             <hr>
             Copyright <?=date("Y")?> - Todos os direitos reservados
         </div>
