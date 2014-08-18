@@ -17,7 +17,7 @@ class Contato {
     private $codigo;
     private $nome;
     private $email;
-	private $endereco;
+    private $endereco;
     private $dataNascimento;
 
     public function getCodigo() {
